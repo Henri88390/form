@@ -1,5 +1,6 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
+import { Input } from "../../components/Input/Input";
 import { GenderEnum } from "../../models/enums/GenderEnum";
 import styles from "./ProfileForm.module.scss";
 import { profileFormSchema } from "./ProfileFormSchema";
@@ -14,10 +15,11 @@ export const ProfileForm = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={styles.formContainer}>
-      <span className={styles.inputLine}>
-        <label>First Name</label>
-        <input {...register("firstName")} />
-      </span>
+      <Input
+        {...register("firstName")}
+        label={"First Name"}
+        className={styles.inputWrapper}
+      />
       <div className={styles.errorMessage}>{errors.firstName?.message}</div>
       <span className={styles.inputLine}>
         <label>Gender Selection</label>
@@ -27,10 +29,11 @@ export const ProfileForm = () => {
         </select>
       </span>
       <div className={styles.errorMessage}>{errors.gender?.message}</div>
-      <span className={styles.inputLine}>
-        <label>Website</label>
-        <input {...register("website")} />
-      </span>
+      <Input
+        {...register("website")}
+        label={"Website"}
+        className={styles.inputWrapper}
+      />
       <div className={styles.errorMessage}>{errors.website?.message}</div>
       <input type="submit" />
     </form>
