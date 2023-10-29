@@ -1,7 +1,12 @@
 import "./App.scss";
+import { ProfileForm } from "./forms/ProfileForm/ProfileForm";
 
 const App = () => {
-  return <></>;
+  return (
+    <>
+      <ProfileForm />
+    </>
+  );
 };
 
 export default App;
