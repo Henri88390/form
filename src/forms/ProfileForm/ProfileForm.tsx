@@ -1,7 +1,9 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { Input } from "../../components/Input/Input";
+import { MultiSelect } from "../../components/MultiSelect/MultiSelect";
 import { Select } from "../../components/Select/Select";
+import { CountriesEnum } from "../../models/enums/CountriesEnum";
 import { GenderEnum } from "../../models/enums/GenderEnum";
 import styles from "./ProfileForm.module.scss";
 import { profileFormSchema } from "./ProfileFormSchema";
@@ -32,6 +34,16 @@ export const ProfileForm = () => {
         ]}
       />
       <div className={styles.errorMessage}>{errors.gender?.message}</div>
+      <MultiSelect
+        {...register("countries")}
+        label={"Countries"}
+        className={styles.inputWrapper}
+        options={[
+          { value: CountriesEnum.france, label: "France" } as HTMLOptionElement,
+          { value: CountriesEnum.poland, label: "Poland" } as HTMLOptionElement,
+        ]}
+      />
+      <div className={styles.errorMessage}>{errors.countries?.message}</div>
       <Input
         {...register("website")}
         label={"Website"}

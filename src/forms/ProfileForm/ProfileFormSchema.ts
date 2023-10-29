@@ -1,4 +1,5 @@
 import * as yup from "yup";
+import { CountriesEnum } from "../../models/enums/CountriesEnum";
 import { GenderEnum } from "../../models/enums/GenderEnum";
 
 export const profileFormSchema = yup.object({
@@ -9,5 +10,6 @@ export const profileFormSchema = yup.object({
   gender: yup
     .mixed<GenderEnum>()
     .oneOf(Object.values(GenderEnum), "This gender doesn't exist"),
+  countries: yup.array().of(yup.mixed<CountriesEnum>()),
   website: yup.string().url().optional(),
 });

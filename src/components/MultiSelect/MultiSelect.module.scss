@@ -1,0 +1,13 @@
+.selectWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.selectedValuesContainer {
+  width: 200px;
+  border: 1px solid black;
+  height: 20px;
+  padding: 4px;
+  gap: 4px;
+  display: flex;
+}

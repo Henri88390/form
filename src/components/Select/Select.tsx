@@ -16,7 +16,7 @@ export const Select = forwardRef(
     return (
       <div className={styles.inputWrapper}>
         {label}
-        <select className={styles.inputContainer} ref={ref} {...otherProps}>
+        <select ref={ref} {...otherProps}>
           {otherProps.options.map(({ value, label }) => (
             <option key={value} value={value}>
               {label}
