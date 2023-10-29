@@ -1,15 +1,16 @@
-import { SubmitHandler, useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useForm } from "react-hook-form";
 import { GenderEnum } from "../../models/enums/GenderEnum";
 import styles from "./ProfileForm.module.scss";
-
-interface IFormInput {
-  firstName: string;
-  gender: GenderEnum;
-}
+import { profileFormSchema } from "./ProfileFormSchema";
 
 export const ProfileForm = () => {
-  const { register, handleSubmit } = useForm<IFormInput>();
-  const onSubmit: SubmitHandler<IFormInput> = (data) => console.log(data);
+  const { register, handleSubmit, formState } = useForm({
+    defaultValues: {},
+    resolver: yupResolver(profileFormSchema),
+  });
+  const { errors } = formState;
+  const onSubmit = (data: any) => console.log(data);
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={styles.formContainer}>
@@ -17,6 +18,7 @@ export const ProfileForm = () => {
         <label>First Name</label>
         <input {...register("firstName")} />
       </span>
+      <div className={styles.errorMessage}>{errors.firstName?.message}</div>
       <span className={styles.inputLine}>
         <label>Gender Selection</label>
         <select {...register("gender")}>
@@ -24,6 +26,12 @@ export const ProfileForm = () => {
           <option value={GenderEnum.female}>male</option>
         </select>
       </span>
+      <div className={styles.errorMessage}>{errors.gender?.message}</div>
+      <span className={styles.inputLine}>
+        <label>Website</label>
+        <input {...register("website")} />
+      </span>
+      <div className={styles.errorMessage}>{errors.website?.message}</div>
       <input type="submit" />
     </form>
   );
