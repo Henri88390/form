@@ -1,6 +1,7 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { Input } from "../../components/Input/Input";
+import { Logo } from "../../components/Logo/Logo";
 import { MultiSelect } from "../../components/MultiSelect/MultiSelect";
 import { Select } from "../../components/Select/Select";
 import { CountriesEnum } from "../../models/enums/CountriesEnum";
@@ -18,6 +19,7 @@ export const ProfileForm = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={styles.formContainer}>
+      <Logo />
       <Input
         {...register("firstName")}
         label={"First Name"}
