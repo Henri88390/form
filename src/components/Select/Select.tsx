@@ -8,7 +8,7 @@ type SelectProps = React.DetailedHTMLProps<
   label?: string;
   options: HTMLOptionElement[];
 };
-export const Select = forwardRef(
+export const CustomSelect = forwardRef(
   (
     { label, ...otherProps }: SelectProps,
     ref: React.ForwardedRef<HTMLSelectElement>
